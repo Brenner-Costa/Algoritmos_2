@@ -78,6 +78,94 @@ void exercicio2 ()
 
 }
 
+void exercicio3()
+{
+    int x = 23;
+    float y = 9.7;
+
+    int *pt1 = &x;
+    float *pt2 = &y;
+    float **pt3 = &pt2;
+
+    *pt1 = *pt1 + 10;
+    cout << "incrementando o valor de X: " << *pt1<< endl;
+
+    cout << "Somando os valores de X e Y utilizando ponteiros: " << *pt1 + *pt2 << endl;
+    cout << "Endereco de memoria de X: " << &x << endl;
+    cout << "Endereco de memoria de X somando +16 na memoria (Com ponteiro): " << pt1 + 4 << endl;
+    cout << "Endereco de memoria de X somando +16 na memoria (Com ponteiro): " << pt1 + 4 << endl;
+    cout << "Endereco de memoria de X somando +16 na memoria (Com ponteiro): " << **pt3<< endl;
+
+
+
+
+
+}
+
+void exercicio4(int *a, int *b)
+{
+    int aux = 0;
+
+    cout << "Trocando os valores..." << endl;
+    aux = *a;
+    *a = *b;
+    *b = aux;
+
+}
+
+void exercicio5(int num, int div, int *q, int *r)
+{
+    cout << "Preparando a divisao..." << endl;
+    int valor = num/div;
+
+    *q = valor;
+    cout << "Descobrindo o quociente..." << endl;
+
+    *r = num%div;
+    cout << "Descobrindo o resto..." << endl;
+
+
+}
+
+bool exercicio6(int tam, int vet[], int *par, int *
+                impar, int *negativos)
+{
+    int resto;
+
+    for (int i = 0; i < tam; i++)
+    {
+        cout << "Digite um valor para a posicao " << i+1 << " do vetor: ";
+        cin >> vet[i];
+
+        if(vet[i] >= 0)
+        {
+            resto = vet[i]%2;
+            if(resto == 0)
+            {
+                cout << "Adicionando aos pares..." << endl;
+                (*par)++;
+            }
+            else
+            {
+                cout << "Adicionando aos impares..." << endl;
+                (*impar)++;
+            }
+
+        }
+        else
+        {
+            cout << "Adicionando aos negativos..." << endl;
+            (*negativos)++;
+        }
+    }
+
+
+
+// par se o resto der 0 // inpar se o resto der 1 e negativo se for menor do que 0
+// faz um for percorrendo o vetor de X posicoes, pega o valor na posicao i, faz a divisao por 2 e faz a verificacao
+// se for par, soma 1 na variavel acumuladora par, se for impar coloca na impar se for negativa coloca na negativa
+}
+
 int main()
 {
     /*
@@ -122,10 +210,120 @@ int main()
     segunda posicao do vetor.  ̃
     ▶ Novamente, imprima os conteudos do vetor e das variaveis a, b e c.
 
+    exercicio2();
+
+
+
+
+    3) Faca o que se pede nos itens a seguir:
+    ▶ Declare e inicialize um ponteiro pt1 com o endereco de x.
+    ▶ Incremente o valor de x de forma indireta.
+    ▶ Declare um segundo ponteiro (pt2) e faca-o apontar para y.
+    ▶ Imprima a soma dos valores de x e y, sem usar as variaveis  ́
+    x e y.
+    ▶ Imprima o endereco da posicao de memoria localizada 16  ́
+    bytes apos o endereco de x.
+    ▶ Declare um terceiro ponteiro (pt3) e faca-o apontar para o
+    ponteiro de y.
+    ▶ Usando pt3, mova pt2 para a proxima posicao de memoria  ́
+    ▶ Usando apenas pt3, imprima os enderec ̧os de pt3 e pt2.
+
+    exercicio3();
+
+
+    4)Implemente a funcao troca que troca o conteudo de duas  ́
+    variaveis inteiras a e b. Faca um programa que teste a
+    funcao implementada. Prototipo:  ́
+
+    void troca(int *a, int *b);
+
+
+    int a = 0, b = 0;
+
+    cout << "Digite um numero para A: ";
+    cin >> a;
+    cout << "Digite um numero para B: ";
+    cin >> b;
+
+    cout << "Valor das variaveis ANTES da troca: " << a << " , " << b << endl;
+
+    exercicio4(&a, &b);
+
+    cout << "Valor das variaveis DEPOIS da troca: " << a << " , " << b << endl;
+
+
+
+    5)Dados dois numeros inteiros num e div, faca uma funcao
+    para calcular e retornar o quociente e o resto da divisao
+    inteira de num por div. Considerar o seguinte prototipo:  ́
+    void divisao(int num, int div, int *q, int *r);
+    onde:
+    ▶ num e dividendo;  ́
+    ▶ div e o divisor;  ́
+    ▶ q e o quociente;  ́
+    ▶ r e o resto.  ́
+
+
+
+    int num = 0, div = 0, q = 0, r = 0;
+
+    cout << "Digite o dividendo: ";
+    cin >> num;
+
+    if(num > 0)
+    {
+
+        while(div <= 0)
+        {
+            cout << "Digite o divisor: ";
+            cin >> div;
+            if(div <= 0)
+            {
+                cout << "Valor invalido! Digite um valor maior do que zero." << endl;
+            }
+        }
+
+        exercicio5(num, div, &q, &r);
+
+    }
+    else
+    {
+        cout << "Digite um valor maior do que 0 para conseguir fazer a divisão" << endl;
+    }
+
+    cout << "Quociente da divisao entre " << num << " e " << div << ": " << q << endl;
+    cout << "Resto da divisao entre " << num << " e " << div << ": " << r;
+
+
+
+
+    6. Implemente uma unica funcao que receba um vetor de
+    numeros inteiros (vet) e o seu tamanho (tam) e:
+    ▶ conte o total de elementos pares;
+    ▶ conte o total de elementos ımpares;
+    ▶ conte o total de elementos negativos;
+    ▶ retorne verdadeiro se existirem numeros negativos no
+    vetor, ou retorne falso, caso contrario.  ́
+
+
+    int vet[10], tam = 0, par, impar, negativo;
+
+    //O vetor tá dando problema se tirar o 10
+
+    cout << "Digite o tamanho do vetor: ";
+    cin >> tam;
+
+    vet[tam];
+
+    exercicio6(tam, vet, &par, &impar, &negativo);
+
+    cout << "Quantidade de numeros pares no vetor: " << par << endl;
+    cout << "Quantidade de numeros impares no vetor: " << impar << endl;
+    cout << "Quantidade de numeros negativos no vetor: " << negativo << endl;
+
+
 
     */
-
-    exercicio2();
 
 
     return 0;
