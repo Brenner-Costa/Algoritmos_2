@@ -4,6 +4,24 @@ using namespace std;
 
 void exercicio1 ()
 {
+    /*
+    Faca um programa que realize as seguintes operacoes:  ̃
+    ▶ Declare um ponteiro para inteiro pt.
+    ▶ Imprima o endereco de pt.
+    ▶ Crie uma variavel inteira x.
+    ▶ Leia um valor para x.
+    ▶ Faca com que pt aponte para x.
+    ▶ Imprima o conteudo da variavel pt.
+    ▶ Imprima o endereco de x.
+    ▶ Usando apenas o ponteiro pt multiplique x por 10 e altere
+    o seu valor.
+    ▶ Imprima o conteudo apontado por pt.
+    ▶ Some 10 a variavel pt.
+    ▶ Imprima o seu conteudo novamente. Qual o significado  ́
+    desta saıda?
+
+    */
+
     int *pt, x = 0;
     cout << "Endereco de pt: " << &pt << endl;
 
@@ -31,6 +49,31 @@ void exercicio1 ()
 
 void exercicio2 ()
 {
+
+    /*
+
+    2 - Dadas as declaracoes e inicializacoes abaixo:
+    int a=10, b=20, c=30, v[3], *pti, *pti1, *pti2;
+    pti1 = &a;
+    pti2 = &b;
+
+    Faca o que se pede nos itens a seguir:
+    ▶ Usando pti1 e pti2, faca com que a e b recebam o valor de c.
+    ▶ Usando pti e aritmetica de ponteiros, preencha o vetor v com os valores
+    de seus  ́ındices somados de 1.
+    ▶ Imprima os conteudos do vetor e das variaveis a, b e c.
+    ▶ Usando pti, atribua a variavel a o valor da primeira posicao do vetor  ̃
+    acrescido de 99.
+    ▶ Usando pti1 e pti2, atribua a primeira posicao do vetor a soma dos  ̃
+    valores de a e b.
+    ▶ Atribua a segunda posicao do vetor o conteudo apontado por pti2.
+    ▶ Usando aritmetica de ponteiros, atribua a terceira posicao do vetor o  ̃
+    conteudo apontado por pti.
+    ▶ Usando ponteiros, incremente o valor de b e decremente o valor da
+    segunda posicao do vetor.  ̃
+    ▶ Novamente, imprima os conteudos do vetor e das variaveis a, b e c.
+
+    */
 
     int a=10, b=20, c=30, v[3], *pti, *pti1, *pti2;
     pti1 = &a;
@@ -80,6 +123,24 @@ void exercicio2 ()
 
 void exercicio3()
 {
+    /*
+
+    3) Faca o que se pede nos itens a seguir:
+    ▶ Declare e inicialize um ponteiro pt1 com o endereco de x.
+    ▶ Incremente o valor de x de forma indireta.
+    ▶ Declare um segundo ponteiro (pt2) e faca-o apontar para y.
+    ▶ Imprima a soma dos valores de x e y, sem usar as variaveis  ́
+    x e y.
+    ▶ Imprima o endereco da posicao de memoria localizada 16  ́
+    bytes apos o endereco de x.
+    ▶ Declare um terceiro ponteiro (pt3) e faca-o apontar para o
+    ponteiro de y.
+    ▶ Usando pt3, mova pt2 para a proxima posicao de memoria  ́
+    ▶ Usando apenas pt3, imprima os enderec ̧os de pt3 e pt2.
+
+
+    */
+
     int x = 23;
     float y = 9.7;
 
@@ -102,7 +163,36 @@ void exercicio3()
 
 }
 
-void exercicio4(int *a, int *b)
+
+void exercicio4()
+{
+
+    /*
+
+    4)Implemente a funcao troca que troca o conteudo de duas  ́
+    variaveis inteiras a e b. Faca um programa que teste a
+    funcao implementada.
+
+    */
+
+    int a = 0, b = 0;
+
+    cout << "Digite um numero para A: ";
+    cin >> a;
+    cout << "Digite um numero para B: ";
+    cin >> b;
+
+    cout << "Valor das variaveis ANTES da troca: " << a << " , " << b << endl;
+
+    troca(&a, &b);
+    //Essa funcao esta com problema de declaracao no escopo
+
+    cout << "Valor das variaveis DEPOIS da troca: " << a << " , " << b << endl;
+
+
+}
+
+void troca(int *a, int *b)
 {
     int aux = 0;
 
@@ -113,8 +203,58 @@ void exercicio4(int *a, int *b)
 
 }
 
-void exercicio5(int num, int div, int *q, int *r)
+void exercicio5()
 {
+
+    int num = 0, div = 0, q = 0, r = 0;
+
+    cout << "Digite o dividendo: ";
+    cin >> num;
+
+    if(num > 0)
+    {
+
+        while(div <= 0)
+        {
+            cout << "Digite o divisor: ";
+            cin >> div;
+            if(div <= 0)
+            {
+                cout << "Valor invalido! Digite um valor maior do que zero." << endl;
+            }
+        }
+
+        divisao(num, div, &q, &r);
+        //Esta dando erro de escopo na funçao divisao
+
+    }
+    else
+    {
+        cout << "Digite um valor maior do que 0 para conseguir fazer a divisão" << endl;
+    }
+
+    cout << "Quociente da divisao entre " << num << " e " << div << ": " << q << endl;
+    cout << "Resto da divisao entre " << num << " e " << div << ": " << r;
+
+}
+
+void divisao(int num, int div, int *q, int *r)
+{
+    /*
+
+    5)Dados dois numeros inteiros num e div, faca uma funcao
+    para calcular e retornar o quociente e o resto da divisao
+    inteira de num por div. Considerar o seguinte prototipo:  ́
+    void divisao(int num, int div, int *q, int *r);
+    onde:
+    ▶ num e dividendo;  ́
+    ▶ div e o divisor;  ́
+    ▶ q e o quociente;  ́
+    ▶ r e o resto.  ́
+
+    */
+
+
     cout << "Preparando a divisao..." << endl;
     int valor = num/div;
 
@@ -130,6 +270,17 @@ void exercicio5(int num, int div, int *q, int *r)
 bool exercicio6(int tam, int vet[], int *par, int *
                 impar, int *negativos)
 {
+
+    /*
+    6. Implemente uma unica funcao que receba um vetor de
+    numeros inteiros (vet) e o seu tamanho (tam) e:
+    ▶ conte o total de elementos pares;
+    ▶ conte o total de elementos ımpares;
+    ▶ conte o total de elementos negativos;
+    ▶ retorne verdadeiro se existirem numeros negativos no
+    vetor, ou retorne falso, caso contrario.  ́
+    */
+
     int resto;
 
     for (int i = 0; i < tam; i++)
@@ -169,142 +320,14 @@ bool exercicio6(int tam, int vet[], int *par, int *
 int main()
 {
     /*
-    Exercicio 1
-
-    Faca um programa que realize as seguintes operacoes:  ̃
-    ▶ Declare um ponteiro para inteiro pt.
-    ▶ Imprima o endereco de pt.
-    ▶ Crie uma variavel inteira x.
-    ▶ Leia um valor para x.
-    ▶ Faca com que pt aponte para x.
-    ▶ Imprima o conteudo da variavel pt.
-    ▶ Imprima o endereco de x.
-    ▶ Usando apenas o ponteiro pt multiplique x por 10 e altere
-    o seu valor.
-    ▶ Imprima o conteudo apontado por pt.
-    ▶ Some 10 a variavel pt.
-    ▶ Imprima o seu conteudo novamente. Qual o significado  ́
-    desta saıda?
 
     exercicio1();
 
-
-    2 - Dadas as declaracoes e inicializacoes abaixo:
-    int a=10, b=20, c=30, v[3], *pti, *pti1, *pti2;
-    pti1 = &a;
-    pti2 = &b;
-
-    Faca o que se pede nos itens a seguir:
-    ▶ Usando pti1 e pti2, faca com que a e b recebam o valor de c.
-    ▶ Usando pti e aritmetica de ponteiros, preencha o vetor v com os valores
-    de seus  ́ındices somados de 1.
-    ▶ Imprima os conteudos do vetor e das variaveis a, b e c.
-    ▶ Usando pti, atribua a variavel a o valor da primeira posicao do vetor  ̃
-    acrescido de 99.
-    ▶ Usando pti1 e pti2, atribua a primeira posicao do vetor a soma dos  ̃
-    valores de a e b.
-    ▶ Atribua a segunda posicao do vetor o conteudo apontado por pti2.
-    ▶ Usando aritmetica de ponteiros, atribua a terceira posicao do vetor o  ̃
-    conteudo apontado por pti.
-    ▶ Usando ponteiros, incremente o valor de b e decremente o valor da
-    segunda posicao do vetor.  ̃
-    ▶ Novamente, imprima os conteudos do vetor e das variaveis a, b e c.
-
     exercicio2();
-
-
-
-
-    3) Faca o que se pede nos itens a seguir:
-    ▶ Declare e inicialize um ponteiro pt1 com o endereco de x.
-    ▶ Incremente o valor de x de forma indireta.
-    ▶ Declare um segundo ponteiro (pt2) e faca-o apontar para y.
-    ▶ Imprima a soma dos valores de x e y, sem usar as variaveis  ́
-    x e y.
-    ▶ Imprima o endereco da posicao de memoria localizada 16  ́
-    bytes apos o endereco de x.
-    ▶ Declare um terceiro ponteiro (pt3) e faca-o apontar para o
-    ponteiro de y.
-    ▶ Usando pt3, mova pt2 para a proxima posicao de memoria  ́
-    ▶ Usando apenas pt3, imprima os enderec ̧os de pt3 e pt2.
 
     exercicio3();
 
-
-    4)Implemente a funcao troca que troca o conteudo de duas  ́
-    variaveis inteiras a e b. Faca um programa que teste a
-    funcao implementada. Prototipo:  ́
-
-    void troca(int *a, int *b);
-
-
-    int a = 0, b = 0;
-
-    cout << "Digite um numero para A: ";
-    cin >> a;
-    cout << "Digite um numero para B: ";
-    cin >> b;
-
-    cout << "Valor das variaveis ANTES da troca: " << a << " , " << b << endl;
-
-    exercicio4(&a, &b);
-
-    cout << "Valor das variaveis DEPOIS da troca: " << a << " , " << b << endl;
-
-
-
-    5)Dados dois numeros inteiros num e div, faca uma funcao
-    para calcular e retornar o quociente e o resto da divisao
-    inteira de num por div. Considerar o seguinte prototipo:  ́
-    void divisao(int num, int div, int *q, int *r);
-    onde:
-    ▶ num e dividendo;  ́
-    ▶ div e o divisor;  ́
-    ▶ q e o quociente;  ́
-    ▶ r e o resto.  ́
-
-
-
-    int num = 0, div = 0, q = 0, r = 0;
-
-    cout << "Digite o dividendo: ";
-    cin >> num;
-
-    if(num > 0)
-    {
-
-        while(div <= 0)
-        {
-            cout << "Digite o divisor: ";
-            cin >> div;
-            if(div <= 0)
-            {
-                cout << "Valor invalido! Digite um valor maior do que zero." << endl;
-            }
-        }
-
-        exercicio5(num, div, &q, &r);
-
-    }
-    else
-    {
-        cout << "Digite um valor maior do que 0 para conseguir fazer a divisão" << endl;
-    }
-
-    cout << "Quociente da divisao entre " << num << " e " << div << ": " << q << endl;
-    cout << "Resto da divisao entre " << num << " e " << div << ": " << r;
-
-
-
-
-    6. Implemente uma unica funcao que receba um vetor de
-    numeros inteiros (vet) e o seu tamanho (tam) e:
-    ▶ conte o total de elementos pares;
-    ▶ conte o total de elementos ımpares;
-    ▶ conte o total de elementos negativos;
-    ▶ retorne verdadeiro se existirem numeros negativos no
-    vetor, ou retorne falso, caso contrario.  ́
-
+    exercicio4();
 
     int vet[10], tam = 0, par, impar, negativo;
 
@@ -323,8 +346,19 @@ int main()
 
 
 
+    7) Crie uma funcao que recebe como parametro um vetor
+    vet de elementos inteiros e seu tamanho n. Utilizando
+    obrigatoriamente a func ̧ao ̃ troca (Exercıcio 4), a funcao
+    deve inverter os elementos dentro do vetor original vet,
+    trocando o primeiro elemento com o ultimo, o segundo
+    com o penultimo, e assim por diante. Faca um programa
+    que utilize sua func ̧ao para inverter os elementos de um
+    vetor. Depois, imprima o vetor invertido.
+
+
     */
 
+    exercicio4();
 
     return 0;
 }
