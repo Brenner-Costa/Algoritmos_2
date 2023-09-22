@@ -77,15 +77,13 @@ void exercicio2(int n, float vet1[], float vet2[])
 
 int* indicesPares(int vet[], int n)
 {
-
-    //descobrir quais indices sao pares no vetor passado por referencia
     int acumula = 0;
 
     for (int i = 0; i < n; i++)
     {
         if(i%2 == 0)
         {
-            cout << "Posicao " << i << " -> PAR" << endl;
+            cout << "Posicao " << i << " = " << vet[i] << " -> PAR" << endl;
             acumula++;
         }
         else
@@ -96,21 +94,74 @@ int* indicesPares(int vet[], int n)
 
     int *novoVet = new int [acumula];
 
-    for (int j = 0; j < acumula; j++)
+    int j = 0;
+
+    for (int i = 0; i <= acumula; i++)
     {
-        novoVet[j] = vet[j];
-        cout << "Valor da posicao " << j << " do ANTIGO vetor: " << vet[j] << endl;
-        cout << "Valor da posicao " << j << " do NOVO vetor: " << novoVet[j] << endl;
+
+        if(i%2 == 0)
+        {
+            novoVet[j] = vet[i];
+            cout << "Valor da posicao " << i << " do NOVO vetor: " << novoVet[j] << endl;
+            j++;
+        }
+
     }
+
+    for(int i = 0; i < acumula; i++)
+    {
+        cout << novoVet[i] << endl;
+    }
+
+//O VETOR NOVO ESTA RECEBENDO OS VALORES MAS ESTA PARANDO QUANDO CHEGA NA POSICAO 4
+
+    return novoVet;
 }
 
+
+int* redimensiona(int vet[], int tam,int novo)
+{
+
+    cout << "Digite um tamanho para o NOVO vetor: ";
+    cin >> novo;
+
+    if(novo > tam)
+    {
+        cout << "O tamanho do vetor NOVO e MAIOR que o ORIGINAL..." << endl;
+        int *novoVet = new int [novo];
+
+        for(int i = 0; i < novo; i++)
+        {
+            novoVet[i] = vet[i];
+            cout << *novoVet << endl;
+            novoVet++;
+            // Esta com problema para copiar os valores do vetor original para o novo.
+        }
+
+        return novoVet;
+
+    } else {
+
+        cout << "O vetor ORIGINAL eh MAIOR do que o NOVO!" << endl;
+        return vet;
+
+    }
+
+}
 
 int main()
 {
 
+//---------------------------------------------------------------------------------------
+
+    //EXERCICIO 1
+
     //exercicio1();
 
-    //exercicio 2
+
+//---------------------------------------------------------------------------------------
+
+    //EXERCICIO 2
 
     /*
     int n = 0;
@@ -137,11 +188,17 @@ int main()
 
     */
 
-    //exercicio 3
+//---------------------------------------------------------------------------------------
 
+    //EXERCICIO 3
+    // AINDA ESTA COM ERROS NA FUNCAO
+
+    /*
     int n = 0;
     cout << "Digite o tamanho para o vetor: ";
     cin >> n;
+
+    cout << endl;
 
     int *vet = new int [n];
 
@@ -155,7 +212,35 @@ int main()
 
     indicesPares(vet, n);
 
+    */
 
+//---------------------------------------------------------------------------------------
+
+
+// EXERCICIO 4
+
+    int tam = 0, novo = 0, *vet;
+
+    cout <<  "Digite um tamanho para o vetor ORIGINAL: ";
+    cin >> tam;
+
+    vet = new int [tam];
+
+    for (int i = 0; i < tam; i++)
+    {
+        cout << "Digite um valor para a posicao " << i << " do vetor ORIGINAL: ";
+        cin >> vet[i];
+        cout << endl;
+
+    }
+
+    redimensiona(vet, tam, novo);
+
+    cout << redimensiona << endl;
+    // DAR UMA OLHADA NO RETORNO DESSA FUNCAO. ESTA RETORNANDO TRUE E NAO O ARRAY INTEIRO.
+
+    delete [] vet;
+    //delete [] redimensiona;
 
     return 0;
 }

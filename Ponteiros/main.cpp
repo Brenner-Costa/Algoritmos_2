@@ -164,16 +164,129 @@ void exercicio3()
 }
 
 
-void exercicio4()
+void troca(int *a, int *b)
+{
+    int aux = 0;
+
+    cout << "Trocando os valores..." << endl;
+    aux = *a;
+    *a = *b;
+    *b = aux;
+
+}
+
+void divisao(int num, int div, int *q, int *r)
+{
+
+
+    cout << "Preparando a divisao..." << endl;
+    int valor = num/div;
+
+    *q = valor;
+    cout << "Descobrindo o quociente..." << endl;
+
+    *r = num%div;
+    cout << "Descobrindo o resto..." << endl;
+
+
+}
+
+bool exercicio6(int tam, int vet[], int *par, int *impar, int *negativos)
 {
 
     /*
+    6. Implemente uma unica funcao que receba um vetor de
+    numeros inteiros (vet) e o seu tamanho (tam) e:
+    ▶ conte o total de elementos pares;
+    ▶ conte o total de elementos ımpares;
+    ▶ conte o total de elementos negativos;
+    ▶ retorne verdadeiro se existirem numeros negativos no
+    vetor, ou retorne falso, caso contrario.
+    */
+
+    int resto = 0;
+
+    for (int i = 0; i < tam; i++)
+    {
+        // cout << tam << endl;
+        // cout << i << endl;
+
+        cout << "Digite um valor para a posicao " << i+1 << " do vetor: ";
+        cin >> vet[i];
+
+        if(vet[i] >= 0)
+        {
+            resto = vet[i]%2;
+            if(resto == 0)
+            {
+                cout << "Adicionando aos pares..." << endl;
+                (*par)++;
+            }
+            else
+            {
+                cout << "Adicionando aos impares..." << endl;
+                (*impar)++;
+            }
+
+        }
+        else
+        {
+            cout << "Adicionando aos negativos..." << endl;
+            (*negativos)++;
+        }
+    }
+
+    if(*(negativos) > 0)
+    {
+        cout << "True" << endl;
+        return true;
+    }
+    else
+    {
+        cout << "False" << endl;
+        return false;
+    }
+
+
+
+// par se o resto der 0 // inpar se o resto der 1 e negativo se for menor do que 0
+// faz um for percorrendo o vetor de X posicoes, pega o valor na posicao i, faz a divisao por 2 e faz a verificacao
+// se for par, soma 1 na variavel acumuladora par, se for impar coloca na impar se for negativa coloca na negativa
+}
+
+void imprime(int *vet, int tam)
+{
+    for(int i = 0; i < tam; i++)
+        cout << "O valor eh: " << vet[i] << endl;
+}
+
+void inverte(int vet[], int n)
+{
+    for(int i = 0; i < n/2; i++)
+        troca(&vet[i], &vet[n - i - 1]);
+}
+
+int main()
+{
+    /*
+
+    exercicio1();
+
+    exercicio2();
+
+    exercicio3();
+
+    /*
+
+    //------------------------------------------------------------------------------------------
+
+    //EXERCICIO 4
 
     4)Implemente a funcao troca que troca o conteudo de duas  ́
     variaveis inteiras a e b. Faca um programa que teste a
     funcao implementada.
 
-    */
+
 
     int a = 0, b = 0;
 
@@ -190,21 +303,20 @@ void exercicio4()
     cout << "Valor das variaveis DEPOIS da troca: " << a << " , " << b << endl;
 
 
-}
+    //------------------------------------------------------------------------------------------
 
-void troca(int *a, int *b)
-{
-    int aux = 0;
+    //EXERCICIO 5
 
-    cout << "Trocando os valores..." << endl;
-    aux = *a;
-    *a = *b;
-    *b = aux;
+    5)Dados dois numeros inteiros num e div, faca uma funcao
+    para calcular e retornar o quociente e o resto da divisao
+    inteira de num por div. Considerar o seguinte prototipo:  ́
+    void divisao(int num, int div, int *q, int *r);
+    onde:
+    ▶ num e dividendo;  ́
+    ▶ div e o divisor;  ́
+    ▶ q e o quociente;  ́
+    ▶ r e o resto.  ́
 
-}
-
-void exercicio5()
-{
 
     int num = 0, div = 0, q = 0, r = 0;
 
@@ -236,116 +348,32 @@ void exercicio5()
     cout << "Quociente da divisao entre " << num << " e " << div << ": " << q << endl;
     cout << "Resto da divisao entre " << num << " e " << div << ": " << r;
 
-}
 
-void divisao(int num, int div, int *q, int *r)
-{
-    /*
+    //------------------------------------------------------------------------------------------
 
-    5)Dados dois numeros inteiros num e div, faca uma funcao
-    para calcular e retornar o quociente e o resto da divisao
-    inteira de num por div. Considerar o seguinte prototipo:  ́
-    void divisao(int num, int div, int *q, int *r);
-    onde:
-    ▶ num e dividendo;  ́
-    ▶ div e o divisor;  ́
-    ▶ q e o quociente;  ́
-    ▶ r e o resto.  ́
+    //EXERCICIO 6
 
-    */
-
-
-    cout << "Preparando a divisao..." << endl;
-    int valor = num/div;
-
-    *q = valor;
-    cout << "Descobrindo o quociente..." << endl;
-
-    *r = num%div;
-    cout << "Descobrindo o resto..." << endl;
-
-
-}
-
-bool exercicio6(int tam, int vet[], int *par, int *
-                impar, int *negativos)
-{
-
-    /*
-    6. Implemente uma unica funcao que receba um vetor de
-    numeros inteiros (vet) e o seu tamanho (tam) e:
-    ▶ conte o total de elementos pares;
-    ▶ conte o total de elementos ımpares;
-    ▶ conte o total de elementos negativos;
-    ▶ retorne verdadeiro se existirem numeros negativos no
-    vetor, ou retorne falso, caso contrario.  ́
-    */
-
-    int resto;
-
-    for (int i = 0; i < tam; i++)
-    {
-        cout << "Digite um valor para a posicao " << i+1 << " do vetor: ";
-        cin >> vet[i];
-
-        if(vet[i] >= 0)
-        {
-            resto = vet[i]%2;
-            if(resto == 0)
-            {
-                cout << "Adicionando aos pares..." << endl;
-                (*par)++;
-            }
-            else
-            {
-                cout << "Adicionando aos impares..." << endl;
-                (*impar)++;
-            }
-
-        }
-        else
-        {
-            cout << "Adicionando aos negativos..." << endl;
-            (*negativos)++;
-        }
-    }
-
-
-
-// par se o resto der 0 // inpar se o resto der 1 e negativo se for menor do que 0
-// faz um for percorrendo o vetor de X posicoes, pega o valor na posicao i, faz a divisao por 2 e faz a verificacao
-// se for par, soma 1 na variavel acumuladora par, se for impar coloca na impar se for negativa coloca na negativa
-}
-
-int main()
-{
-    /*
-
-    exercicio1();
-
-    exercicio2();
-
-    exercicio3();
-
-    exercicio4();
-
-    int vet[10], tam = 0, par, impar, negativo;
-
-    //O vetor tá dando problema se tirar o 10
+    int tam = 0, par = 0, impar = 0, negativo = 0, *vet;
 
     cout << "Digite o tamanho do vetor: ";
     cin >> tam;
 
-    vet[tam];
+    vet = new int [tam];
 
     exercicio6(tam, vet, &par, &impar, &negativo);
+
+    cout << "Existem negativos (true = 1 // false = 0) -> " << exercicio6 << endl;
 
     cout << "Quantidade de numeros pares no vetor: " << par << endl;
     cout << "Quantidade de numeros impares no vetor: " << impar << endl;
     cout << "Quantidade de numeros negativos no vetor: " << negativo << endl;
 
 
+    //------------------------------------------------------------------------------------------
 
+    //EXERCICIO 7
+
+    /*
     7) Crie uma funcao que recebe como parametro um vetor
     vet de elementos inteiros e seu tamanho n. Utilizando
     obrigatoriamente a func ̧ao ̃ troca (Exercıcio 4), a funcao
@@ -356,9 +384,13 @@ int main()
     vetor. Depois, imprima o vetor invertido.
 
 
+    int vet[6] = {1, 2, 3, 4, 5, 6};
+
+    inverte(vet, 6);
+
+    imprime(vet, 6);
+
+
     */
-
-    exercicio4();
-
     return 0;
 }
